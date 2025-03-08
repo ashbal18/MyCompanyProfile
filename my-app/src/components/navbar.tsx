@@ -6,7 +6,6 @@ import About from "@/app/about/page";
 import Product from "@/app/product/page";
 import Home from "@/app/home/page";
 
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -32,13 +31,14 @@ export default function Navbar() {
 
         {/* Navigation Links */}
         <div
-          className={`absolute top-[60px] left-0 right-0 bg-white shadow-md flex flex-col items-center space-y-4 p-5 md:flex md:flex-row md:static md:shadow-none md:space-y-0 md:space-x-6 md:p-0 transition-all duration-300 ease-in-out ${isOpen ? "block" : "hidden"}`}
+          className={`absolute top-[60px] left-0 right-0 bg-white shadow-md flex flex-col items-center space-y-4 p-5 md:flex md:flex-row md:static md:shadow-none md:space-y-0 md:space-x-6 md:p-0 transition-all duration-300 ease-in-out ${
+            isOpen ? "block" : "hidden"
+          }`}
         >
           <NavLink href="#hero">Home</NavLink>
           <NavLink href="#about">About</NavLink>
           <NavLink href="#product">Product</NavLink>
           <NavLink href="#contact">Contact</NavLink>
-      
         </div>
       </div>
 
@@ -51,7 +51,7 @@ export default function Navbar() {
           <About />
         </Section>
         <Section id="product" title="">
-          <Product  />
+          <Product />
         </Section>
         <Section id="contact" title="">
           <Contact />
@@ -62,21 +62,39 @@ export default function Navbar() {
 }
 
 // Komponen untuk Link dengan Smooth Scroll
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+function NavLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <a href={href} onClick={handleClick} className="hover:text-teal-700 cursor-pointer text-lg font-medium">
+    <a
+      href={href}
+      onClick={handleClick}
+      className="hover:text-teal-700 cursor-pointer text-lg font-medium"
+    >
       {children}
     </a>
   );
 }
 
 // Komponen untuk Section Halaman
-function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
+function Section({
+  id,
+  title,
+  children,
+}: {
+  id: string;
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
     <section id={id} className="min-h-screen flex flex-col justify-center p-4">
       <h2 className="text-2xl font-bold text-center md:text-left">{title}</h2>
